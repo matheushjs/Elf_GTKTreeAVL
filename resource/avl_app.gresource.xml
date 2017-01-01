@@ -1,0 +1,10 @@
+<!--
+     vim: tabstop=2 shiftwidth=2
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+	<gresource prefix="com/gitlab/matheushjs/avl_app">
+		<file preprocess="xml-stripblanks">resource/avl_win.ui</file>
+	</gresource>
+</gresources>

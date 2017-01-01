@@ -1,0 +1,28 @@
+<!--
+		 vim: tabstop=2 shiftwidth=2
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="AvlWin" parent="GtkApplicationWindow">
+		<property name="title" translatable="no">Avl Tree Application</property>
+		<child>
+			<object class="GtkGrid" id="main_grid">
+				<property name="halign">GTK_ALIGN_CENTER</property>
+				<property name="valign">GTK_ALIGN_CENTER</property>
+				<property name="column-spacing">10</property>
+				<property name="margin">10</property>
+				<child>
+					<object class="GtkGrid" id="input_grid">
+						<property name="halign">GTK_ALIGN_CENTER</property>
+						<property name="valign">GTK_ALIGN_CENTER</property>
+					</object>
+					<packing>
+						<property name="top-attach">0</property>
+						<property name="left-attach">0</property>
+					</packing>
+				</child>
+			</object>
+		</child>
+	</template>
+</interface>
