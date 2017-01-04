@@ -38,18 +38,28 @@ static gchar *copyright_string =
 \n\
 	Contact me: matheus.saldanha@usp.br";
 
+#include <stdio.h>
 static
-void help_activated(GSimpleAction *action, GVariant *param, gpointer app){
+void response(GtkDialog *diag, gint response_id, gpointer user_data){
+	if(response_id == GTK_RESPONSE_DELETE_EVENT)
+		gtk_window_close(GTK_WINDOW(diag));
+}
+
+static
+void about_activated(GSimpleAction *action, GVariant *param, gpointer app){
 	GtkAboutDialog *diag;
 	gchar *authors[2] = {"Matheus H. J. Saldanha", NULL};
 
 	diag = g_object_new(GTK_TYPE_ABOUT_DIALOG, 
+			"application", app,
 			"authors", authors,
 			"copyright", copyright_string,
 			"program-name", "GtkAvlTree",
 			"version", "1.0",
 			"comments", "Implementation, with an user interface, of an AvlTree for storing numbers of type integer.",
 			NULL);
+
+	g_signal_connect(diag, "response", G_CALLBACK(response), NULL);
 
 	gtk_window_present(GTK_WINDOW(diag));
 }
@@ -61,7 +71,7 @@ void quit_activated(GSimpleAction *action, GVariant *param, gpointer app){
 
 static GActionEntry app_entries[] =
 {
-	{ "help", help_activated, NULL, NULL, NULL },
+	{ "about", about_activated, NULL, NULL, NULL },
 	{ "quit", quit_activated, NULL, NULL, NULL }
 };
 
