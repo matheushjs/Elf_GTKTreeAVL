@@ -9,9 +9,11 @@ struct _AvlEntryButton {
 
 G_DEFINE_TYPE(AvlEntryButton, avl_entry_button, GTK_TYPE_BUTTON);
 
+static
 void avl_entry_button_init(AvlEntryButton *but){
 }
 
+static
 void avl_entry_button_class_init(AvlEntryButtonClass *klass){
 }
 

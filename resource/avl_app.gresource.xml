@@ -5,6 +5,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
 	<gresource prefix="com/gitlab/matheushjs/avl_app">
-		<file preprocess="xml-stripblanks">resource/avl_win.ui</file>
+		<file>resource/avl_win.ui</file>
+		<file>resource/avl_text_box.ui</file>
+		<file>resource/app_menu.ui</file>
 	</gresource>
 </gresources>

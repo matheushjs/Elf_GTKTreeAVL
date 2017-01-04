@@ -1,0 +1,32 @@
+<!--
+	vim: tabstop=2 shiftwidth=2
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="AvlTextBox" parent="GtkBox">
+		<property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+
+		<child>
+			<object class="GtkHeaderBar" id="header">
+				<property name="title">Output Log:</property>
+			</object>
+			<packing>
+				<property name="pack-type">GTK_PACK_START</property>
+			</packing>
+		</child>
+		
+		<child>
+			<object class="GtkTextView" id="text_view">
+				<property name="editable">False</property>
+				<property name="cursor-visible">False</property>
+				<property name="width-request">500</property>
+				<property name="height-request">500</property>
+			</object>
+			<packing>
+				<property name="pack-type">GTK_PACK_START</property>
+			</packing>
+		</child>
+	
+	</template>
+</interface>

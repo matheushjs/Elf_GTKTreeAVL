@@ -196,11 +196,14 @@ gchar *postorder_app_wrapper(){
 
 int main(int argc, char *argv[]){
 	tree_t *tree;
+	AvlApp *myapp;
 
 	tree = tree_alloc(higher, equal, data_free, print);
 	global_tree = tree;
-
-	g_application_run(G_APPLICATION(avl_app_new()), argc, argv);
+	
+	myapp = avl_app_new();
+	g_application_run(G_APPLICATION(myapp), argc, argv);
+	g_object_unref(myapp);
 
 	tree_destroy(&tree);
 	return 0;
