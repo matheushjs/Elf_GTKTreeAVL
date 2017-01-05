@@ -1,2 +1,5 @@
 Add variables 'size' and 'height' to the tree_t structure. Then create functions that return the height and the size.
 Find successor and predecessor of keys that aren't in the tree.
+
+Add a file choosing option, so that the user can choose a file to get input from (same format as your uni format).
+You'll need a new class that defines its relations with the TextBox class.
