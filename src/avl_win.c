@@ -5,6 +5,7 @@
 #include <avl_text_box.h>
 #include <avl_entry_button.h>
 #include <avl_text_button.h>
+#include <avl_file_button.h>
 
 #include <avlwrappers.h>
 
@@ -80,6 +81,10 @@ void avl_win_init(AvlWin *win){
 	//Size button
 	tbut = avl_text_button_new("Size", box, NULL);
 	gtk_grid_attach(priv->input_grid, GTK_WIDGET(tbut), 0, 10, 2, 1);
+
+	//File Chooser button
+	AvlFileButton *fbut = avl_file_button_new(GTK_WINDOW(win));
+	gtk_grid_attach(priv->input_grid, GTK_WIDGET(fbut), 0, 11, 2, 1);
 
 	gtk_widget_show_all(GTK_WIDGET(priv->main_grid));
 }

@@ -7,6 +7,8 @@
 #include <gtk/gtk.h>
 #include <avl_app.h>
 
+#define OUTPUTFILE "output.txt"
+
 static
 bool higher(const void *a, const void *b){
 	return (*(int *)a > *(int *)b) ? true : false;
@@ -192,6 +194,102 @@ gchar *postorder_app_wrapper(){
 	fclose(fp);
 
 	return ret;
+}
+
+void parse_wrapper(gchar *filename){
+	int op;
+	void *num, *res;
+	FILE *fp, *outfp;
+
+	fp = fopen(filename, "r");
+	outfp = fopen(OUTPUTFILE, "w");
+
+	while(fscanf(fp, "%d", &op) == 1){
+		switch(op){
+			case 1:
+				//insert
+				num = malloc(sizeof(int));
+				fscanf(fp, "%d", (int *) num);
+				tree_insert(global_tree, num);
+				break;
+
+			case 2:
+				//successor
+				num = malloc(sizeof(int));
+				fscanf(fp, "%d", (int *) num);
+				res = tree_successor(global_tree, num);
+				if(res) fprintf(outfp, "%d\n", *(int *) res);
+				else fprintf(outfp, "error\n");
+				free(num);
+				break;
+
+			case 3:
+				//predecessor
+				num = malloc(sizeof(int));
+				fscanf(fp, "%d", (int *) num);
+				res = tree_predecessor(global_tree, num);
+				if(res) fprintf(outfp, "%d\n", *(int *) res);
+				else fprintf(outfp, "error\n");
+				free(num);
+				break;
+
+			case 4:
+				//max
+				res = tree_highest(global_tree);
+				if(res) fprintf(outfp, "%d\n", *(int *) res);
+				else fprintf(outfp, "error\n");
+				break;
+
+			case 5:
+				//min
+				res = tree_lowest(global_tree);
+				if(res) fprintf(outfp, "%d\n", *(int *) res);
+				else fprintf(outfp, "error\n");
+				break;
+
+			case 6:
+				//preorder
+				tree_print_preorder(global_tree, outfp);
+				fprintf(outfp, "\n");
+				break;
+
+			case 7:
+				//inorder
+				tree_print_inorder(global_tree, outfp);
+				fprintf(outfp, "\n");
+				break;
+
+			case 8:
+				//postorder
+				tree_print_postorder(global_tree, outfp);
+				fprintf(outfp, "\n");
+				break;
+
+			case 9:
+				//search
+				num = malloc(sizeof(int));
+				fscanf(fp, "%d", (int *) num);
+				if(tree_search(global_tree, num))
+					fprintf(outfp, "Found %d\n", *(int *) num);
+				else fprintf(outfp, "Did not find %d\n", *(int *) num);
+				free(num);
+				break;
+
+			case 10:
+				//remove
+				num = malloc(sizeof(int));
+				fscanf(fp, "%d", (int *) num);
+				tree_remove(global_tree, num);
+				free(num);
+				break;
+
+			default:
+				fprintf(outfp, "Invalid command\n");
+		}
+	}
+
+	fclose(fp);
+	fclose(outfp);
 }
 
 int main(int argc, char *argv[]){

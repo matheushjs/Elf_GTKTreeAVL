@@ -6,7 +6,7 @@ LIBS=`pkg-config --libs gtk+-3.0`
 #Files
 SRC=src/avl_app.c src/avl_win.c src/avl_entry.c src/avl_text_box.c	\
     src/avl_entry_button.c src/avl_text_button.c src/avltree.c		\
-    src/avl_about_win.c src/resources.c
+    src/avl_about_win.c src/avl_file_button.c src/resources.c
 INCLUDE=include/
 MAIN1=src/main.c
 BIN1=prog

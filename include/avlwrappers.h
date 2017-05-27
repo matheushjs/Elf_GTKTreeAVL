@@ -15,5 +15,6 @@ gchar *min_app_wrapper(void);
 gchar *preorder_app_wrapper(void);
 gchar *inorder_app_wrapper(void);
 gchar *postorder_app_wrapper(void);
+void parse_wrapper(gchar *filename);
 
 #endif
